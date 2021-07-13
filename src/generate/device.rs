@@ -263,7 +263,7 @@ pub fn render(d: &Device, config: &Config, device_x: &mut String) -> Result<Toke
 
             ///Unchecked version of `Peripherals::take`
             #[inline]
-            pub unsafe fn steal() -> Self {
+            pub unsafe const fn steal() -> Self {
                 DEVICE_PERIPHERALS = true;
 
                 Peripherals {

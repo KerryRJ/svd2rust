@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- `Peripherals::steal` now `const fn`
 - Support for device.x generation for riscv targets and `__EXTERNAL_INTERRUPTS` vector table
 - Re-export base's module for derived peripherals
 
