@@ -220,7 +220,20 @@ pub fn render(
         } else {
             mod_items.extend(quote! {
                 #interrupt_enum
+            });
 
+            if target == Target::XtensaLX {
+                mod_items.extend(quote! {
+                    unsafe impl xtensa_lx::interrupt::InterruptNumber for Interrupt {
+                        #[inline(always)]
+                        fn number(#self_token) -> u16 {
+                            #nr_expr
+                        }
+                    }
+                });
+            }
+
+            mod_items.extend(quote! {
                 #[derive(Debug, Copy, Clone)]
                 pub struct TryFromInterruptError(());
 
